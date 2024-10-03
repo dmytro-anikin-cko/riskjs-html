@@ -1,5 +1,6 @@
 const script = document.getElementById("risk-js");
 const pay = document.getElementById("pay");
+const text = document.getElementById("deviceSessionId")
 let risk;
 
 if (script) {
@@ -23,12 +24,16 @@ function initializeRiskJs() {
 
 pay.addEventListener("click", async () => {
   try {
+    if (!risk) {
+      throw new Error("Risk.js not initialized");
+    }
     const deviceSessionId = await risk.publishRiskData();
-    console.log("Device Session ID:", deviceSessionId);
-
+    
+    text.textContent = `${deviceSessionId}`;
     // Now, you can send the deviceSessionId with your payment data
     // For example, store it or send it in the request to your backend
   } catch (error) {
     console.error("Error publishing risk data:", error);
+    text.textContent = "Error retrieving Device Session ID";
   }
 });

@@ -4,11 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Risk.js Basic Integration</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
 
-    <button id="pay">PAY</button>
+    <div class="container">
+      <button id="pay" class="pay-button">PAY</button>
+      <h1 class="dsid">
+        <p>Your Device Session Id is:</p>  
+        <span id="deviceSessionId"></span>
+      </h1>
+    </div>
 
     <script
       id="risk-js"
