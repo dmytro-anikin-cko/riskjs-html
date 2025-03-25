@@ -8,19 +8,26 @@
   </head>
 
   <body>
-
     <div class="container">
-      <button id="pay" class="pay-button">PAY</button>
+      <button id="get" class="pay-button">GET</button>
       <h1 class="dsid">
-        <p>Your Device Session Id is:</p>  
+        <p>Your Device Session Id is:</p>
         <span id="deviceSessionId"></span>
       </h1>
     </div>
 
-    <script
+    <!-- <script
       id="risk-js"
       async
       src="https://risk.sandbox.checkout.com/cdn/risk/1/risk.js"
+    ></script> -->
+
+    <script
+      id="risk-js"
+      defer
+      src="https://risk.sandbox.checkout.com/cdn/risk/2.0/risk.js"
+      integrity="sha384-v4imG5YwivvIFd2uzkyW6Vfzu0neTHsfjUKJLUD8daa1QdKaIYy/Hp1czN1wK7oV"
+      crossorigin="anonymous"
     ></script>
 
     <script src="script.js"></script>

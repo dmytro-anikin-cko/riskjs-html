@@ -1,5 +1,5 @@
 const script = document.getElementById("risk-js");
-const pay = document.getElementById("pay");
+const get = document.getElementById("get");
 const text = document.getElementById("deviceSessionId")
 let risk;
 
@@ -17,16 +17,23 @@ if (script) {
   console.error("Risk.js script tag not found");
 }
 
-function initializeRiskJs() {
-  risk = window.Risk.init("pk_sbox_guri7tp655hvceb3qaglozm7gee");
-  console.log("Risk.js initialized");
+async function initializeRiskJs() {
+  try {
+    risk = await window.Risk.create("pk_sbox_guri7tp655hvceb3qaglozm7gee");
+    console.log("Risk.js initialized");
+    console.log("Risk instance:", risk); // Now this will log the actual instance
+  } catch (error) {
+    console.error("Error initializing Risk.js:", error);
+  }
 }
 
-pay.addEventListener("click", async () => {
+
+get.addEventListener("click", async () => {
   try {
     if (!risk) {
       throw new Error("Risk.js not initialized");
     }
+    
     const deviceSessionId = await risk.publishRiskData();
     
     text.textContent = `${deviceSessionId}`;
